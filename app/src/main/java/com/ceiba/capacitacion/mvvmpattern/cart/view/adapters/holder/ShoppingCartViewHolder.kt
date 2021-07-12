@@ -9,8 +9,7 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.ceiba.capacitacion.mvvmpattern.R
 import com.ceiba.capacitacion.mvvmpattern.databinding.ItemMovieBinding
-import com.ceiba.capacitacion.mvvmpattern.movies.model.dataAccess.vo.Movie
-import com.ceiba.capacitacion.mvvmpattern.shared.view.extensions.loadImage
+import com.ceiba.capacitacion.mvvmpattern.movie.model.dataAccess.local.vo.Movie
 
 class ShoppingCartViewHolder(
     private val actionShoppingCart: (addOrDelete: Boolean, movieId: Int) -> Unit,

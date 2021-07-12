@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/allMoviesFragment"
-        android:name="com.ceiba.capacitacion.mvvmpattern.movies.view.fragments.AllMoviesFragment"
+        android:name="com.ceiba.capacitacion.mvvmpattern.movie.view.fragment.AllMoviesFragment"
         android:label="@string/all_movies">
         <action
             android:id="@+id/action_allMoviesFragment_to_aboutOfMovieFragment"
@@ -14,11 +14,11 @@
     </fragment>
     <fragment
         android:id="@+id/aboutOfMovieFragment"
-        android:name="com.ceiba.capacitacion.mvvmpattern.movies.view.fragments.AboutOfMovieFragment"
+        android:name="com.ceiba.capacitacion.mvvmpattern.movie.view.fragment.AboutOfMovieFragment"
         android:label="AboutOfMovieFragment" />
     <fragment
         android:id="@+id/shoppingCartFragment"
-        android:name="com.ceiba.capacitacion.mvvmpattern.cart.view.fragments.ShoppingCartFragment"
+        android:name="com.ceiba.capacitacion.mvvmpattern.cart.view.fragment.ShoppingCartFragment"
         android:label="@string/shopping_car">
         <action
             android:id="@+id/action_shoppingCartFragment_to_aboutOfMovieFragment"

@@ -1,7 +1,7 @@
 package com.ceiba.capacitacion.mvvmpattern.cart.viewmodel
 
 import androidx.lifecycle.ViewModel
-import com.ceiba.capacitacion.mvvmpattern.cart.model.models.ShoppingCartModel
+import com.ceiba.capacitacion.mvvmpattern.cart.model.ShoppingCartModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 

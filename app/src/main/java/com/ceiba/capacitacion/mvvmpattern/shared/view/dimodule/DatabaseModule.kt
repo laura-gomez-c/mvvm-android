@@ -2,8 +2,8 @@ package com.ceiba.capacitacion.mvvmpattern.shared.view.dimodule
 
 import android.content.Context
 import com.ceiba.capacitacion.mvvmpattern.shared.model.dataAccess.AppDataBase
-import com.ceiba.capacitacion.mvvmpattern.movies.model.dataAccess.dao.MovieDao
-import com.ceiba.capacitacion.mvvmpattern.cart.model.dataAccess.daos.ShoppingCartDao
+import com.ceiba.capacitacion.mvvmpattern.movie.model.dataAccess.local.dao.MovieDao
+import com.ceiba.capacitacion.mvvmpattern.cart.model.dataAccess.local.daos.ShoppingCartDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
