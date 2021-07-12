@@ -4,12 +4,19 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
+import com.ceiba.capacitacion.mvvmpattern.R
+import com.ceiba.capacitacion.mvvmpattern.cart.view.adapters.MovieAdapter
+import com.ceiba.capacitacion.mvvmpattern.cart.view.adapters.setDataMovie
 import com.ceiba.capacitacion.mvvmpattern.databinding.FragmentAllMoviesLayoutBinding
 import com.ceiba.capacitacion.mvvmpattern.shared.view.extension.showMessage
 import com.ceiba.capacitacion.mvvmpattern.shared.model.dataAccess.utils.response.Resource
 import com.ceiba.capacitacion.mvvmpattern.movie.viewmodel.MovieViewModel
+import com.ceiba.capacitacion.mvvmpattern.shared.model.dataAccess.utils.Status
+import com.ceiba.capacitacion.mvvmpattern.shared.view.extension.isHide
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

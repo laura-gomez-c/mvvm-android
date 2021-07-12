@@ -14,7 +14,10 @@ import com.ceiba.capacitacion.mvvmpattern.shared.view.extension.showMessage
 import com.ceiba.capacitacion.mvvmpattern.databinding.FragmentAboutOfMovieLayoutBinding
 import com.ceiba.capacitacion.mvvmpattern.movie.model.dataAccess.local.vo.Movie
 import com.ceiba.capacitacion.mvvmpattern.movie.viewmodel.MovieViewModel
+import com.ceiba.capacitacion.mvvmpattern.shared.model.dataAccess.utils.Status
 import com.ceiba.capacitacion.mvvmpattern.shared.model.dataAccess.utils.response.Resource
+import com.ceiba.capacitacion.mvvmpattern.shared.view.extension.isHide
+import com.ceiba.capacitacion.mvvmpattern.shared.view.extension.loadImageDetail
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

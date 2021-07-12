@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.ceiba.capacitacion.mvvmpattern.R
 import com.ceiba.capacitacion.mvvmpattern.databinding.ItemMovieBinding
 import com.ceiba.capacitacion.mvvmpattern.movie.model.dataAccess.local.vo.Movie
+import com.ceiba.capacitacion.mvvmpattern.shared.view.extension.loadImage
 
 class ShoppingCartViewHolder(
     private val actionShoppingCart: (addOrDelete: Boolean, movieId: Int) -> Unit,
