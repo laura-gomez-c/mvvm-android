@@ -3,8 +3,8 @@ package com.ceiba.capacitacion.mvvmpattern.cart.model.dataAccess.local.daos
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
-import com.ceiba.capacitacion.mvvmpattern.movie.model.dataAccess.local.entities.MovieEntity
 import com.ceiba.capacitacion.mvvmpattern.cart.model.dataAccess.local.entities.ShoppingCarEntity
+import com.ceiba.capacitacion.mvvmpattern.movie.model.dataAccess.local.entities.MovieEntity
 
 @Dao
 interface ShoppingCartDao {

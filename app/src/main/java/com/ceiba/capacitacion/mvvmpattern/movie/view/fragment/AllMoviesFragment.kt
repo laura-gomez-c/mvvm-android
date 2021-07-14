@@ -12,11 +12,11 @@ import com.ceiba.capacitacion.mvvmpattern.R
 import com.ceiba.capacitacion.mvvmpattern.cart.view.adapters.MovieAdapter
 import com.ceiba.capacitacion.mvvmpattern.cart.view.adapters.setDataMovie
 import com.ceiba.capacitacion.mvvmpattern.databinding.FragmentAllMoviesLayoutBinding
-import com.ceiba.capacitacion.mvvmpattern.shared.view.extension.showMessage
-import com.ceiba.capacitacion.mvvmpattern.shared.model.dataAccess.utils.response.Resource
 import com.ceiba.capacitacion.mvvmpattern.movie.viewmodel.MovieViewModel
 import com.ceiba.capacitacion.mvvmpattern.shared.model.dataAccess.utils.Status
+import com.ceiba.capacitacion.mvvmpattern.shared.model.dataAccess.utils.response.Resource
 import com.ceiba.capacitacion.mvvmpattern.shared.view.extension.isHide
+import com.ceiba.capacitacion.mvvmpattern.shared.view.extension.showMessage
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -25,16 +25,10 @@ class AllMoviesFragment : Fragment() {
     private val viewModel: MovieViewModel by viewModels()
     private lateinit var binding: FragmentAllMoviesLayoutBinding
 
-    //@Inject
-    //lateinit var movieModel: MovieModel
-
-    //@Inject
-    //lateinit var shoppingCartModel: ShoppingCartModel
-
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
+            inflater: LayoutInflater,
+            container: ViewGroup?,
+            savedInstanceState: Bundle?
     ): View? {
         binding = FragmentAllMoviesLayoutBinding.inflate(inflater, container, false)
         return binding.root
@@ -54,9 +48,7 @@ class AllMoviesFragment : Fragment() {
                 Status.ERROR -> loader.root.isHide(true)
             }
             if (result.status != Status.LOADING) {
-                (result.message
-                    ?: requireContext().getString(R.string.something_unexpected_happened))
-                    .showMessage(requireContext())
+                result.message?.let { requireContext().getString(it).showMessage(requireContext()) }
             }
         }
     }
@@ -91,8 +83,7 @@ class AllMoviesFragment : Fragment() {
                     Status.ERROR -> {
                         movieList.setDataMovie(null, listEmpty)
                         loader.root.isHide(true)
-                        Toast.makeText(context, "Error", Toast.LENGTH_LONG)
-                                .show()
+                        Toast.makeText(context, "Error", Toast.LENGTH_LONG).show()
                     }
                 }
             })

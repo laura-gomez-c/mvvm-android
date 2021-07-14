@@ -1,7 +1,7 @@
 package com.ceiba.capacitacion.mvvmpattern.cart.model.dataAccess.dtos
 
-import com.ceiba.capacitacion.mvvmpattern.movie.model.dataAccess.local.vo.Movie
 import com.ceiba.capacitacion.mvvmpattern.movie.model.dataAccess.local.entities.MovieEntity
+import com.ceiba.capacitacion.mvvmpattern.movie.model.dataAccess.local.vo.Movie
 
 fun List<Movie>.toMovieEntity(): List<MovieEntity> {
     return map {

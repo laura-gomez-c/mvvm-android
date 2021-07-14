@@ -1,7 +1,7 @@
 package com.ceiba.capacitacion.mvvmpattern.movie.model.dataAccess.remote.dtos
 
-import com.ceiba.capacitacion.mvvmpattern.movie.model.dataAccess.local.vo.Movie
 import com.ceiba.capacitacion.mvvmpattern.movie.model.dataAccess.local.entities.MovieEntity
+import com.ceiba.capacitacion.mvvmpattern.movie.model.dataAccess.local.vo.Movie
 import com.ceiba.capacitacion.mvvmpattern.movie.model.dataAccess.remote.vos.MovieVo
 
 fun List<MovieVo>.toMovieEntity(): List<MovieEntity> {

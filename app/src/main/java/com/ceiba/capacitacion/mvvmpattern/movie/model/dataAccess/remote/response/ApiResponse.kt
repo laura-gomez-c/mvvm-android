@@ -3,13 +3,13 @@ package com.ceiba.capacitacion.mvvmpattern.movie.model.dataAccess.remote.respons
 import retrofit2.Response
 import java.net.HttpURLConnection
 
-sealed class ApiResponse<T>{
+sealed class ApiResponse<T> {
     companion object {
         fun <T> create(response: Response<T>): ApiResponse<T> {
 
             // Error = false, Success = true
-            val isValid = if(response.isSuccessful){
-                when(response.code()){
+            val isValid = if (response.isSuccessful) {
+                when (response.code()) {
                     HttpURLConnection.HTTP_OK -> {
                         true
                     }
@@ -17,21 +17,21 @@ sealed class ApiResponse<T>{
                         false
                     }
                 }
-            }else{
+            } else {
                 false
             }
 
-            return if(isValid){
+            return if (isValid) {
                 val body = response.body()
                 if (body == null) {
                     ApiEmptyResponse()
                 } else {
                     ApiSuccessResponse(
-                        code = response.code(),
-                        message = response.message(),
-                        body = body)
+                            code = response.code(),
+                            message = response.message(),
+                            body = body)
                 }
-            }else{
+            } else {
                 val msg = response.errorBody()?.string()
                 val errorMsg = if (msg.isNullOrEmpty()) {
                     response.message()

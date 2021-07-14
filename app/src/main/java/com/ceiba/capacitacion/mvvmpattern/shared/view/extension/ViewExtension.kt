@@ -18,23 +18,23 @@ fun View.isHide(isGone: Boolean) {
 fun AppCompatImageView.loadImage(url: String?) {
     if (!url.isNullOrEmpty()) {
         Glide.with(context)
-            .load(BaseUrlImage + url)
-            .override(
-                context.resources.getDimension(R.dimen.imageWidth).toInt(),
-                context.resources.getDimension(R.dimen.imageHeight).toInt()
-            )
-            .into(this)
+                .load(BaseUrlImage + url)
+                .override(
+                        context.resources.getDimension(R.dimen.imageWidth).toInt(),
+                        context.resources.getDimension(R.dimen.imageHeight).toInt()
+                )
+                .into(this)
     }
 }
 
 fun AppCompatImageView.loadImageDetail(url: String?) {
     if (!url.isNullOrEmpty()) {
         Glide.with(context)
-            .load(BaseUrlImage + url)
-            .override(
-                context.resources.getDimension(R.dimen.imageDetailWidth).toInt(),
-                context.resources.getDimension(R.dimen.imageDetailHeight).toInt()
-            )
-            .into(this)
+                .load(BaseUrlImage + url)
+                .override(
+                        context.resources.getDimension(R.dimen.imageDetailWidth).toInt(),
+                        context.resources.getDimension(R.dimen.imageDetailHeight).toInt()
+                )
+                .into(this)
     }
 }

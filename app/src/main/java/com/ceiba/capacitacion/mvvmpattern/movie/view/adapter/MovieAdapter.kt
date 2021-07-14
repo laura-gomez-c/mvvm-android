@@ -9,37 +9,37 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.ceiba.capacitacion.mvvmpattern.R
-import com.ceiba.capacitacion.mvvmpattern.movie.view.adapter.holder.MoviesViewHolder
 import com.ceiba.capacitacion.mvvmpattern.cart.view.adapters.holder.ShoppingCartViewHolder
 import com.ceiba.capacitacion.mvvmpattern.databinding.ItemMovieBinding
 import com.ceiba.capacitacion.mvvmpattern.movie.model.dataAccess.local.vo.Movie
+import com.ceiba.capacitacion.mvvmpattern.movie.view.adapter.holder.MoviesViewHolder
 
 class MovieAdapter(
-    private val actionShoppingCart: (addOrDelete: Boolean, movieId: Int) -> Unit,
-    @MenuRes private val menuRes: Int
+        private val actionShoppingCart: (addOrDelete: Boolean, movieId: Int) -> Unit,
+        @MenuRes private val menuRes: Int
 ) : ListAdapter<Movie, RecyclerView.ViewHolder>(TeamDiffCallback()) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return when (menuRes) {
             R.menu.popup_menu -> {
                 MoviesViewHolder(
-                    actionShoppingCart,
-                    menuRes,
-                    ItemMovieBinding.inflate(
-                        LayoutInflater.from(parent.context),
-                        parent,
-                        false
-                    )
+                        actionShoppingCart,
+                        menuRes,
+                        ItemMovieBinding.inflate(
+                                LayoutInflater.from(parent.context),
+                                parent,
+                                false
+                        )
                 )
             }
             else -> {
                 ShoppingCartViewHolder(
-                    actionShoppingCart,
-                    menuRes,
-                    ItemMovieBinding.inflate(
-                        LayoutInflater.from(parent.context),
-                        parent,
-                        false
-                    )
+                        actionShoppingCart,
+                        menuRes,
+                        ItemMovieBinding.inflate(
+                                LayoutInflater.from(parent.context),
+                                parent,
+                                false
+                        )
                 )
             }
         }
@@ -57,10 +57,10 @@ class MovieAdapter(
 
 private class TeamDiffCallback : DiffUtil.ItemCallback<Movie>() {
     override fun areItemsTheSame(oldItem: Movie, newItem: Movie): Boolean =
-        oldItem.id == newItem.id
+            oldItem.id == newItem.id
 
     override fun areContentsTheSame(oldItem: Movie, newItem: Movie): Boolean =
-        oldItem == newItem
+            oldItem == newItem
 }
 
 fun RecyclerView.setDataMovie(data: List<Movie>?, textView: TextView) {

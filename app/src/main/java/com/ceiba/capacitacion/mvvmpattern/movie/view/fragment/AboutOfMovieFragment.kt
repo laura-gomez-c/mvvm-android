@@ -10,7 +10,6 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import com.ceiba.capacitacion.mvvmpattern.R
-import com.ceiba.capacitacion.mvvmpattern.shared.view.extension.showMessage
 import com.ceiba.capacitacion.mvvmpattern.databinding.FragmentAboutOfMovieLayoutBinding
 import com.ceiba.capacitacion.mvvmpattern.movie.model.dataAccess.local.vo.Movie
 import com.ceiba.capacitacion.mvvmpattern.movie.viewmodel.MovieViewModel
@@ -18,6 +17,7 @@ import com.ceiba.capacitacion.mvvmpattern.shared.model.dataAccess.utils.Status
 import com.ceiba.capacitacion.mvvmpattern.shared.model.dataAccess.utils.response.Resource
 import com.ceiba.capacitacion.mvvmpattern.shared.view.extension.isHide
 import com.ceiba.capacitacion.mvvmpattern.shared.view.extension.loadImageDetail
+import com.ceiba.capacitacion.mvvmpattern.shared.view.extension.showMessage
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -28,9 +28,9 @@ class AboutOfMovieFragment : Fragment() {
 
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
+            inflater: LayoutInflater,
+            container: ViewGroup?,
+            savedInstanceState: Bundle?
     ): View? {
         binding = FragmentAboutOfMovieLayoutBinding.inflate(inflater, container, false)
         return binding.root
@@ -52,7 +52,7 @@ class AboutOfMovieFragment : Fragment() {
 
     private fun setDataMovie(movie: Movie) {
         with(binding) {
-            movie?.let {
+            movie.let {
                 imageMovie.loadImageDetail(it.posterPath)
                 itemName.text = it.title
                 itemDescription.text = it.overview
@@ -70,21 +70,21 @@ class AboutOfMovieFragment : Fragment() {
                     when (menuItem.itemId) {
                         R.id.add_movie_detail -> {
                             viewModel.addMovie(data.id)
-                                .observe(viewLifecycleOwner, Observer { result ->
-                                    actionEventAddOrRemove(result)
-                                })
+                                    .observe(viewLifecycleOwner, Observer { result ->
+                                        actionEventAddOrRemove(result)
+                                    })
                             true
                         }
                         R.id.delete_movie_detail -> {
                             viewModel.deleteMovie(data.id)
-                                .observe(viewLifecycleOwner, Observer { result ->
-                                    actionEventAddOrRemove(result)
-                                })
+                                    .observe(viewLifecycleOwner, Observer { result ->
+                                        actionEventAddOrRemove(result)
+                                    })
                             true
                         }
                         else -> false
                     }
-                } ?: false
+                }
             }
         }.also { it.show() }
     }
@@ -97,9 +97,7 @@ class AboutOfMovieFragment : Fragment() {
                 Status.ERROR -> loaderAbout.root.isHide(true)
             }
             if (result.status != Status.LOADING) {
-                (result.message
-                    ?: requireContext().getString(R.string.something_unexpected_happened)
-                        ).showMessage(requireContext())
+                result.message?.let { requireContext().getString(it).showMessage(requireContext()) }
             }
         }
     }

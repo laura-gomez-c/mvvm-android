@@ -13,9 +13,9 @@ import com.ceiba.capacitacion.mvvmpattern.movie.model.dataAccess.local.vo.Movie
 import com.ceiba.capacitacion.mvvmpattern.shared.view.extension.loadImage
 
 class ShoppingCartViewHolder(
-    private val actionShoppingCart: (addOrDelete: Boolean, movieId: Int) -> Unit,
-    @MenuRes private val menuRes: Int,
-    private val binding: ItemMovieBinding,
+        private val actionShoppingCart: (addOrDelete: Boolean, movieId: Int) -> Unit,
+        @MenuRes private val menuRes: Int,
+        private val binding: ItemMovieBinding,
 ) : RecyclerView.ViewHolder(binding.root) {
 
     private fun showMenu(v: View, movie: Movie) {
@@ -40,9 +40,9 @@ class ShoppingCartViewHolder(
 
     private fun navigate(elem: Movie, view: View) {
         view.findNavController().navigate(
-            R.id.action_shoppingCartFragment_to_aboutOfMovieFragment, bundleOf(
+                R.id.action_shoppingCartFragment_to_aboutOfMovieFragment, bundleOf(
                 "movie" to elem
-            )
+        )
         )
     }
 

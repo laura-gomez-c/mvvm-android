@@ -11,11 +11,11 @@ import com.ceiba.capacitacion.mvvmpattern.R
 import com.ceiba.capacitacion.mvvmpattern.cart.view.adapters.MovieAdapter
 import com.ceiba.capacitacion.mvvmpattern.cart.view.adapters.setDataMovie
 import com.ceiba.capacitacion.mvvmpattern.cart.viewmodel.ShoppingCartViewModel
-import com.ceiba.capacitacion.mvvmpattern.shared.view.extension.showMessage
 import com.ceiba.capacitacion.mvvmpattern.databinding.FragmentShoppingCartLayoutBinding
-import com.ceiba.capacitacion.mvvmpattern.shared.view.extension.isHide
 import com.ceiba.capacitacion.mvvmpattern.shared.model.dataAccess.utils.Status
 import com.ceiba.capacitacion.mvvmpattern.shared.model.dataAccess.utils.response.Resource
+import com.ceiba.capacitacion.mvvmpattern.shared.view.extension.isHide
+import com.ceiba.capacitacion.mvvmpattern.shared.view.extension.showMessage
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -25,9 +25,9 @@ class ShoppingCartFragment : Fragment() {
     private lateinit var binding: FragmentShoppingCartLayoutBinding
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
+            inflater: LayoutInflater,
+            container: ViewGroup?,
+            savedInstanceState: Bundle?
     ): View? {
         binding = FragmentShoppingCartLayoutBinding.inflate(inflater, container, false)
         return binding.root
@@ -45,9 +45,9 @@ class ShoppingCartFragment : Fragment() {
             fabRemoveAllMovies.setOnClickListener {
                 loaderShopping.root.isHide(true)
                 viewModel.deleteAllMovie()
-                    .observe(viewLifecycleOwner, Observer { result ->
-                        actionEventAddOrRemove(result)
-                    })
+                        .observe(viewLifecycleOwner, Observer { result ->
+                            actionEventAddOrRemove(result)
+                        })
             }
         }
     }
@@ -55,13 +55,13 @@ class ShoppingCartFragment : Fragment() {
     private fun subscribeActionShoppingCart() {
         with(binding) {
             shoppingCartMovieList.adapter = MovieAdapter(
-                { _, movieId ->
-                    loaderShopping.root.isHide(true)
-                    viewModel.deleteMovie(movieId)
-                        .observe(viewLifecycleOwner, Observer { result ->
-                            actionEventAddOrRemove(result)
-                        })
-                }, menuRes = R.menu.popup_menu_shopping
+                    { _, movieId ->
+                        loaderShopping.root.isHide(true)
+                        viewModel.deleteMovie(movieId)
+                                .observe(viewLifecycleOwner, Observer { result ->
+                                    actionEventAddOrRemove(result)
+                                })
+                    }, menuRes = R.menu.popup_menu_shopping
             )
         }
     }
@@ -77,9 +77,7 @@ class ShoppingCartFragment : Fragment() {
                 Status.ERROR -> loaderShopping.root.isHide(true)
             }
             if (result.status != Status.LOADING) {
-                (result.message
-                    ?: requireContext().getString(R.string.something_unexpected_happened)
-                        ).showMessage(requireContext())
+                result.message?.let { requireContext().getString(it).showMessage(requireContext()) }
             }
         }
     }
@@ -97,9 +95,7 @@ class ShoppingCartFragment : Fragment() {
                     Status.ERROR -> {
                         shoppingCartMovieList.setDataMovie(result.data, listEmptyCart)
                         loaderShopping.root.isHide(true)
-                        (result.message
-                            ?: requireContext().getString(R.string.something_unexpected_happened)
-                                ).showMessage(requireContext())
+                        result.message?.let { requireContext().getString(it).showMessage(requireContext()) }
                     }
                 }
             })

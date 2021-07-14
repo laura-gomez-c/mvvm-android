@@ -5,10 +5,10 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.ceiba.capacitacion.mvvmpattern.BuildConfig.DataBaseName
-import com.ceiba.capacitacion.mvvmpattern.movie.model.dataAccess.local.dao.MovieDao
 import com.ceiba.capacitacion.mvvmpattern.cart.model.dataAccess.local.daos.ShoppingCartDao
-import com.ceiba.capacitacion.mvvmpattern.movie.model.dataAccess.local.entities.MovieEntity
 import com.ceiba.capacitacion.mvvmpattern.cart.model.dataAccess.local.entities.ShoppingCarEntity
+import com.ceiba.capacitacion.mvvmpattern.movie.model.dataAccess.local.dao.MovieDao
+import com.ceiba.capacitacion.mvvmpattern.movie.model.dataAccess.local.entities.MovieEntity
 
 @Database(
         entities = [MovieEntity::class
